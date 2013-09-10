@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NINJAM for Android</string>
+    <string name="title_server_list">NINJAM Servers</string>
+    <string name="title_server_detail">Server Detail</string>
+    <string name="title_activity_jam_session">Jam Session</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_microphone">Mute Microphone</string>
+    <string name="action_metronome">Metronome and Tempo</string>
+    <string name="action_speaker">Mute Speaker</string>
+
+</resources>

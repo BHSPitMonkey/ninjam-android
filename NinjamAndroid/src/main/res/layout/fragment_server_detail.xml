@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/server_detail_text"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context=".ServerDetailFragment"
+        android:text="text"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/server_connect_button"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:text="Join this Jam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#47ceff"
+        android:textColor="#fefff9"
+        android:layout_weight="1" />
+</LinearLayout>

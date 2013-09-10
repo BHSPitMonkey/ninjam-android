@@ -1,0 +1,60 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/metronomeBar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MY CHANNELS"
+                android:id="@+id/textView"
+                android:typeface="sans"
+                android:textColor="#47ceff"
+                android:singleLine="false"
+                android:padding="4dp" />
+
+            <GridLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:minHeight="64dp"
+                android:columnCount="2"></GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="OTHER CHANNELS"
+                android:id="@+id/textView2"
+                android:typeface="sans"
+                android:textColor="#47ceff"
+                android:singleLine="false"
+                android:padding="4dp" />
+
+            <GridLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:minHeight="64dp"
+                android:columnCount="2"></GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
