@@ -11,5 +11,9 @@
     <string name="action_microphone">Mute Microphone</string>
     <string name="action_metronome">Metronome and Tempo</string>
     <string name="action_speaker">Mute Speaker</string>
+    <string name="username">Username</string>
+    <string name="password">Password (if required)</string>
+    <string name="login_connect">Connect</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

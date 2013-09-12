@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -24,49 +25,79 @@ import java.net.UnknownHostException;
  */
 public class JamService extends Service {
     // Binder given to clients
-    private final IBinder mBinder = new LocalBinder();
+    private final IBinder mBinder = new JamBinder();
 
     // Connection info
     Socket s;
     String host;
     int port;
+    String username;
+    String password;
+    boolean anonymous;  // Connect anonymously
 
     // Server state
     int bpm;            // Beats Per Minute (tempo)
     int bpi;            // Beats Per Interval
     int maxChannels;    // Max number of channels allowed by server
     String topic;
+    JamUIState uiState;
+
+    // Constants indicating current state
+    public enum JamUIState {
+        NOT_INITIALIZED,
+        NEEDS_CONNECT,
+        //NEEDS_LOGIN,
+        CONNECTING,
+        NEEDS_AGREEMENT_ACCEPT,
+        JAMMING,
+        DISCONNECTED
+    }
 
     /**
      * Class used for the client Binder.  Because we know this service always
      * runs in the same process as its clients, we don't need to deal with IPC.
      */
-    public class LocalBinder extends Binder {
+    public class JamBinder extends Binder {
         JamService getService() {
-            // Return this instance of LocalService so clients can call public methods
-            return JamService.this;
+            // Return this instance of LocalService so clients can call public methods (not thread safe!)
+            return JamService.this; // TODO: Replace with thread safe methods
+        }
+        JamUIState getUIState() {
+            return uiState;
+        }
+        void connect(String hostString, int portInt, String user, String pass, boolean anon) {
+            uiState = JamUIState.CONNECTING;
+
+            host = hostString;
+            port = portInt;
+            username = user;
+            password = pass;
+            anonymous = anon;
+            Log.d("JamService", String.format("Service connecting to %s port %d user %s", host, port, username));
+            try {
+                s = new Socket(host, port);
+            }
+            catch (UnknownHostException e) {
+                // Error msg
+            }
+            catch (IOException e) {
+                // Error msg
+            }
         }
     }
 
+    @Override
+    public void onCreate() {
+        // The service is being created
+        uiState = JamUIState.NEEDS_CONNECT;
+    }
+    @Override
     public IBinder onBind(Intent intent) {
-        // Do setup
-        Uri uri = intent.getData();
-        host = uri.getHost();
-        port = uri.getPort();
-        try {
-            s = new Socket(host, port);
-        }
-        catch (UnknownHostException e) {
-            // Error msg
-        }
-        catch (IOException e) {
-            // Error msg
-        }
-
         return mBinder;
     }
-
+    @Override
     public void onDestroy() {
 
     }
 }
+

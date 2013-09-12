@@ -32,10 +32,10 @@
         <activity
             android:name="com.stepheneisenhauer.ninjamandroid.JamSession"
             android:label="@string/title_activity_jam_session"
-            android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Holo"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:process=":jam">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -46,7 +46,9 @@
                 android:value="splitActionBarWhenNarrow" />
         </activity>
 
-        <service android:name=".JamService" />
+        <service
+            android:name=".JamService"
+            android:process=":jam" />
     </application>
 
 </manifest>
